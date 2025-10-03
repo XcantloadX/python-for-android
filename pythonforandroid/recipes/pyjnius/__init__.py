@@ -14,8 +14,9 @@ class PyjniusRecipe(PyProjectRecipe):
     hostpython_prerequisites = ["Cython<3.2"]
     patches = [
         "use_cython.patch",
-        ('genericndkbuild_jnienv_getter.patch', will_build('genericndkbuild')),
-        ('sdl3_jnienv_getter.patch', will_build('sdl3')),
+        # ('genericndkbuild_jnienv_getter.patch', will_build('genericndkbuild')),
+        # ('sdl3_jnienv_getter.patch', will_build('sdl3')),
+        'qt_jnienv_getter.patch',
     ]
 
     def get_recipe_env(self, arch, **kwargs):
