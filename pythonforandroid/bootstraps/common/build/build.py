@@ -68,7 +68,7 @@ BLACKLIST_PATTERNS = [
     '*.swp',
 
     # Android artifacts
-    '*.apk',
+    # '*.apk',
     '*.aab',
 ]
 
@@ -151,7 +151,7 @@ def make_tar(tfn, source_dirs, byte_compile_python=False, optimize_python=True):
     '''
     Make a zip file `fn` from the contents of source_dis.
     '''
-
+    input(f'tar: {tfn} from {source_dirs}')
     def clean(tinfo):
         """cleaning function (for reproducible builds)"""
         tinfo.uid = tinfo.gid = 0
@@ -168,6 +168,7 @@ def make_tar(tfn, source_dirs, byte_compile_python=False, optimize_python=True):
                 continue
             if fn.endswith('.py') and byte_compile_python:
                 fn = compile_py_file(fn, optimize_python=optimize_python)
+            print((fn, relpath(realpath(fn), sd)))
             files.append((fn, relpath(realpath(fn), sd)))
     files.sort()  # deterministic
 
