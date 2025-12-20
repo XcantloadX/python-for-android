@@ -151,7 +151,7 @@ def make_tar(tfn, source_dirs, byte_compile_python=False, optimize_python=True):
     '''
     Make a zip file `fn` from the contents of source_dis.
     '''
-    input(f'tar: {tfn} from {source_dirs}')
+    print(f'tar: {tfn} from {source_dirs}')
     def clean(tinfo):
         """cleaning function (for reproducible builds)"""
         tinfo.uid = tinfo.gid = 0
