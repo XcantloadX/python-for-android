@@ -1,12 +1,14 @@
 diff -Naur pyjnius.orig/jnius/env.py pyjnius/jnius/env.py
 --- pyjnius.orig/jnius/env.py	2022-05-28 11:16:02.000000000 +0200
 +++ pyjnius/jnius/env.py	2022-05-28 11:18:30.000000000 +0200
-@@ -268,7 +268,7 @@
+@@ -268,7 +268,9 @@
  
  class AndroidJavaLocation(UnixJavaLocation):
      def get_libraries(self):
 -        return ['SDL2', 'log']
-+        return ['main_arm64-v8a', 'log']
++        arch = __import__('os').environ.get('ARCH')
++        main_lib = 'main_{}'.format(arch) if arch else 'main'
++        return [main_lib, 'log']
  
      def get_include_dirs(self):
          # When cross-compiling for Android, we should not use the include dirs
